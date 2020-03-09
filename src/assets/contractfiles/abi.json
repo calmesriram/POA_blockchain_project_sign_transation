@@ -1,0 +1,534 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "verifierAddr",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "id",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "CompanyAdded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "id",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "companyId",
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "IndividualAdded",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_docHash",
+				"type": "string"
+			}
+		],
+		"name": "addCompany",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_docHash",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "_companyId",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes",
+				"name": "_companySign",
+				"type": "bytes"
+			}
+		],
+		"name": "addEmployee",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_docHash",
+				"type": "string"
+			}
+		],
+		"name": "addIndividual",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "addressToCompany",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "addressToIndiv",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "addressesOfCompany",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "startDate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endDate",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "addressesOfIndiv",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "companyPubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes",
+				"name": "companySign",
+				"type": "bytes"
+			},
+			{
+				"internalType": "uint256",
+				"name": "startDate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "endDate",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "companies",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "startDate",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "individuals",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "companyPubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes",
+				"name": "companySign",
+				"type": "bytes"
+			},
+			{
+				"internalType": "uint256",
+				"name": "startDate",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "companyId",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			}
+		],
+		"name": "updateCompanyAddress",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "indivId",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			},
+			{
+				"internalType": "bytes",
+				"name": "companySign",
+				"type": "bytes"
+			}
+		],
+		"name": "updateEmployeeAddress",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "indivId",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "docHash",
+				"type": "string"
+			}
+		],
+		"name": "updateIndividualAddress",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "proofHash",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "pubAddr",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes",
+				"name": "proofSign",
+				"type": "bytes"
+			},
+			{
+				"internalType": "uint256",
+				"name": "proofTimestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "validateProof",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

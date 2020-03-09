@@ -1,0 +1,102 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Add Company</h4>
+            <!-- <p class="card-category">Complete your profile</p> -->
+          </div>
+          <div class="card-body">
+            <form class="form example-form" #c="ngForm" (ngSubmit)="Addcompany(c)">
+              <mat-form-field class="example-full-width">
+                <mat-label>Company Name</mat-label>
+                <input matInput ngModel name="companyname" placeholder="Company Name" required>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <input matInput ngModel name="publicaddress" placeholder="Address" required>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Document Hash</mat-label>
+                <input matInput ngModel name="dochash" placeholder="Document Hash" required>
+              </mat-form-field>
+              <button mat-raised-button type="submit" [disabled]="c.invalid" class="btn btn-danger pull-right">Add
+                Company
+                <mat-icon>
+                  <mat-spinner  *ngIf="api.loader" color="primary" diameter="20">
+                  </mat-spinner>
+                </mat-icon>
+              </button>
+              <div class="clearfix"></div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+
+
+          <div class="card-body">
+            <h6 class="card-category text-gray">Address Id</h6>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Address</mat-label>
+              <input matInput ngModel name="privatekey" [(ngModel)]="address" placeholder="address" required>
+            </mat-form-field>
+            <button mat-raised-button type="button" (click)="getaddressid();" class="btn btn-danger pull-right">Details</button>
+            <br><br><br>
+            <mat-label>companyId</mat-label>            
+            <p class="card-description">
+              {{ api.companyid || ""}}
+            </p><br>
+            <mat-label>Address</mat-label>
+            <p class="card-description">
+              Don't be scared of the truth because we need to restart the human foundation in truth And I love you like
+              Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p><br>           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Update Company</h4>
+            <!-- <p class="card-category">Complete your profile</p> -->
+          </div>
+          <div class="card-body">
+            <form class="form example-form" #c="ngForm" (ngSubmit)="Addcompany(c)">
+              <mat-form-field class="example-full-width">
+                <mat-label>Company Name</mat-label>
+                <input matInput ngModel name="companyname" placeholder="Company Name" required>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Public Address</mat-label>
+                <input matInput ngModel name="publicaddress" placeholder="Public Address" required>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Document Hash</mat-label>
+                <input matInput ngModel name="dochash" placeholder="Document Hash" required>
+              </mat-form-field>
+              <button mat-raised-button type="submit" [disabled]="c.invalid" class="btn btn-danger pull-right">Update
+                Company
+              </button>
+              <div class="clearfix"></div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      
+      </div>
+    </div>
+  </div>
+</div>
