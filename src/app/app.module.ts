@@ -16,7 +16,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { MaterialModule } from 'materialmodule/appMaterial.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ApiService } from './api.service';
-
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -27,6 +30,7 @@ import { ApiService } from './api.service';
     MaterialModule,
     RouterModule,
     AppRoutingModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
@@ -36,11 +40,14 @@ import { ApiService } from './api.service';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    PagenotfoundComponent,
+    LoginComponent,
 
   ],
   entryComponents: [],
   providers: [
-    ApiService
+    ApiService,
+    AuthGuard
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

@@ -4,29 +4,35 @@
       <div class="col-md-7">
         <div class="card">
           <div class="card-header card-header-danger">
-            <h4 class="card-title">Add Company</h4>
+            <h4 class="card-title">Add Employee</h4>
             <!-- <p class="card-category">Complete your profile</p> -->
           </div>
           <div class="card-body">
-            <form class="form example-form" #c="ngForm" (ngSubmit)="Addcompany(c)">
+            <form class="form example-form" #c="ngForm" (ngSubmit)="AddEmployee(c)">
               <mat-form-field class="example-full-width">
-                <mat-label>Company Name</mat-label>
-                <input matInput ngModel name="companyname" placeholder="Company Name" required>
+                <mat-label>Employee Name</mat-label>
+                <input matInput ngModel name="Employeename" placeholder="Employee Name" required>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
                 <mat-label>Address</mat-label>
-                <input matInput ngModel name="publicaddress" placeholder="Address" required>
+                <input matInput ngModel name="Employeeaddress" placeholder="Employee Address" required>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
                 <mat-label>Document Hash</mat-label>
-                <input matInput ngModel name="dochash" placeholder="Document Hash" required>
+                <input matInput ngModel name="Employeedochash" placeholder="Document Hash" required>
               </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Company Id</mat-label>
+                <input matInput ngModel name="Employeecompanyid" placeholder="Employee company id" required>
+              </mat-form-field>              
+
               <button mat-raised-button type="submit" [disabled]="c.invalid" class="btn btn-danger pull-right">Add
-                Company
+                Employee
                 <mat-icon>
-                  <mat-spinner *ngIf="loader" color="primary" diameter="20">
+                  <mat-spinner *ngIf="addloader" color="primary" diameter="20">
                   </mat-spinner>
                 </mat-icon>
               </button>
@@ -41,13 +47,13 @@
 
 
           <div class="card-body">
-            <h6 class="card-category text-gray">Company Details</h6>
+            <h6 class="card-category text-gray">Employee Details</h6>
 
             <mat-form-field class="example-full-width">
               <mat-label>Address</mat-label>
-              <input matInput ngModel name="privatekey" [(ngModel)]="address" placeholder="address" required>
+              <input matInput ngModel name="privatekey" [(ngModel)]="individualaddress" placeholder="address" required>
             </mat-form-field>
-            <button mat-raised-button type="button" (click)="getaddressid();"
+            <button mat-raised-button type="button" (click)="getindividualdetails();"
               class="btn btn-danger pull-right">Details</button>
             <br><br> <br><br>
             <div class="table-responsive">
@@ -61,23 +67,31 @@
                 <tbody>
                   <tr>
                     <th scope="row">Name</th>
-                    <td>{{company_det.name || '-'}}</td>
+                    <td>{{individual_det.name || '-'}}</td>
                   </tr>
                   <tr>
                     <th scope="row">Address</th>
-                    <td>{{company_det.pubAddr || '-'}}</td>
+                    <td>{{individual_det.pubAddr || '-'}}</td>
                   </tr>
                   <tr>
                     <th scope="row">DocHash</th>
-                    <td>{{company_det.docHash || '-'}}</td>
+                    <td>{{individual_det.docHash || '-'}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">Company Id</th>
-                    <td>{{company_det.companyid || '-'}}</td>
+                    <th scope="row">Company Public Address</th>
+                    <td>{{individual_det.companyPubAddr || '-'}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Company Sign</th>
+                    <td>{{individual_det.companySign || '-'}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Individual Id</th>
+                    <td>{{individual_det.individualid || '-'}}</td>
                   </tr>
                   <tr>
                     <th scope="row">Date</th>
-                    <td>{{company_det.startDate || '-'}}</td>
+                    <td>{{individual_det.startDate || '-'}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -90,14 +104,14 @@
       <div class="col-md-7">
         <div class="card">
           <div class="card-header card-header-danger">
-            <h4 class="card-title">Update Company Address</h4>
+            <h4 class="card-title">Update Employee Address</h4>
             <!-- <p class="card-category">Complete your profile</p> -->
           </div>
           <div class="card-body">
-            <form class="form example-form" #u="ngForm" (ngSubmit)="Updatecompany(u)">
+            <form class="form example-form" #u="ngForm" (ngSubmit)="updateemployee(u)">
               <mat-form-field class="example-full-width">
-                <mat-label>Company Id</mat-label>
-                <input matInput ngModel name="companyid" placeholder="Company id" required>
+                <mat-label>Individual Id</mat-label>
+                <input matInput ngModel name="Individualid" placeholder="Individual id" required>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
@@ -109,8 +123,14 @@
                 <mat-label>Document Hash</mat-label>
                 <input matInput ngModel name="dochash" placeholder="Document Hash" required>
               </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Company Sign</mat-label>
+                <input matInput ngModel name="companysign" placeholder="Company Sign" required>
+              </mat-form-field>
+
               <button mat-raised-button type="submit" [disabled]="u.invalid" class="btn btn-danger pull-right">Update
-                Company
+                Employee
                 <mat-icon>
                   <mat-spinner *ngIf="loader" color="primary" diameter="20">
                   </mat-spinner>

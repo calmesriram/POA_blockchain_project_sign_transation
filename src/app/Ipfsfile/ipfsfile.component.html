@@ -3,25 +3,119 @@
         <div class="card">
             <div class="card-header card-header-danger">
                 <h4 class="card-title">Upload files and get ipfs hash</h4>
-                <p class="card-category"></p>
+                <!-- <p class="card-category">asdf</p> -->
             </div>
             <div class="card-body">
                 <div id="typography">
                     <div class="card-title">
-                        <h2>Upload</h2>                     
+                        <h2>Upload</h2>
                     </div>
                     <div class="row">
                         <section>
                             <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow">
                                 <i class="fa fa-upload mr-2"></i>Browse for file ...
-                                <input id="fileUpload" enctype="multipart/form-data" (change)="choose($event);" type="file">
+                                <input id="fileUpload" enctype="multipart/form-data" (change)="choose($event);"
+                                    type="file">
                             </label>
+
                             <h6 style="font-size: large;color:red;text-align: center;">{{displayfilename}}</h6>
-                            <img [src]="url" height="200"> <br/>
+                            <img *ngIf="displayphoto" [src]="url" height="200"> <br /><br><br><br>
+                            <button mat-raised-button type="button" (click)="submitfile();" class="btn btn-danger">
+                                Submit
+                            </button>
                         </section>
 
                         <div class="tim-typo">
-                        
+                            <section>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="card-header" id="typography">
+                                            <h4 class="card-title">IPFS FILE HASH <p
+                                                    style="font-size: large;color: red;">
+                                                    {{uploadfiledetails.Hash}}</p>
+                                            </h4><br>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" *ngIf="showitem">
+                                        <!-- <div class="spinner"></div> -->
+                                        <ul class="list-group">
+                                            <li class="list-group-item">Name:{{uploadfiledetails.Name}}</li>
+                                            <li class="list-group-item">Hash:{{uploadfiledetails.Hash}}</li>
+                                            <li class="list-group-item">Size:{{uploadfiledetails.Size}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- <img src="https://ipfs.io/ipfs/{{ipfsfile_details}}" height="200"> <br />     -->
+                                <!-- <div [src]="ipfshash"></div> -->
+                            </section>
+                            <!-- <section> -->
+
+                            <!-- </section> -->
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <br><br><br><br>
+                            <div style="text-align:center" *ngIf="uploadloader">
+                                <div class="spinner-grow text-muted"></div>
+                                <div class="spinner-grow text-primary"></div>
+                                <div class="spinner-grow text-success"></div>
+                                <div class="spinner-grow text-info"></div>
+                                <div class="spinner-grow text-warning"></div>
+                                <div class="spinner-grow text-danger"></div>
+                                <div class="spinner-grow text-secondary"></div>
+                                <div class="spinner-grow text-dark"></div>
+                                <div class="spinner-grow text-light"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">File Details</h4>
+                <!-- <p class="card-category">asdf</p> -->
+            </div>
+            <div class="card-body">
+                <div id="typography">
+                    <div class="row">
+                        <section>
+                            <!-- <form class="form example-form" #c="ngForm" > -->
+                            <mat-form-field class="example-full-width">
+                                <mat-label>IPFS HASH</mat-label>
+                                <input matInput ngModel #ipfshash name="ipfshash" placeholder="IPFS HASH" required>
+                            </mat-form-field>
+
+                            <button mat-raised-button type="button" (click)="getfile(ipfshash.value)"
+                                class="btn btn-danger">
+                                Get Details
+                            </button>
+                            <!-- </form> -->
+                        </section>
+
+                        <div class="tim-typo">
+                            <section>
+                                <div class="card-header" id="typography">
+                                    <h4 class="card-title">IPFS FILE</h4><br>
+                                    <a target="_blank" href="https://ipfs.io/ipfs/{{ipfsfile_details}}"
+                                        style="font-size: large;">{{ipfsfile_details}}</a>
+                                    <p class="card-category">
+                                        <img *ngIf="ipfsfile_details.length !=0"
+                                            src="https://ipfs.io/ipfs/{{ipfsfile_details}}" height="200"> <br />
+
+                                        <!-- {{
+                                            
+                                        }}</p> -->
+                                </div>
+                            </section>
                         </div>
 
                     </div>

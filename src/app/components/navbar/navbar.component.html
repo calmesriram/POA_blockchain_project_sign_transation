@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>
+          <a class="navbar-brand" href="javascript:void(0)">{{"Balance:"+ accbal}}<small><img src="https://ya-webdesign.com/transparent250_/ethereum-logo-png.png" height="20"></small></a>          
         </div>
         <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
             <span class="sr-only">Toggle navigation</span>
@@ -14,10 +14,14 @@
                
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">
-                        <i class="material-icons">person</i>
+                        <i class="material-icons" data-toggle="dropdown">person</i>
                         <p>
-                            <span class="d-lg-none d-md-block">Account</span>
+                            <span class="d-lg-none d-md-block" >Account</span>
                         </p>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                            <a class="dropdown-item" (click)="logout();">Logout</a>
+                            <!-- <a class="dropdown-item" href="#">Smartphone</a> -->
+                          </div>
                     </a>
                 </li>
             </ul>

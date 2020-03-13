@@ -1,0 +1,32 @@
+<!-- <div class="spinner">
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Private key</mat-label>
+        <input matInput placeholder="Private Key" #pvtkey>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="login(pvtkey.value)">Login</button>
+</form>
+</div> -->
+
+
+
+<div class="login-container spinner">
+    <div class="login-content">
+      <mat-toolbar class="login-toolbar" color="primary">POA LOGIN</mat-toolbar>
+      <mat-card>
+        <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+          <!-- <mat-form-field>
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <input autofocus type="text" matInput placeholder="Username" formControlName="username">
+          </mat-form-field> -->
+
+          <mat-form-field>
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <input type="password" autocomplete="false" matInput placeholder="Privatekey" formControlName="privatekey">
+          </mat-form-field>
+
+          <button type="submit" mat-raised-button color="primary">Login</button>
+        </form>
+      </mat-card>
+    </div>
+  </div>

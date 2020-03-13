@@ -2,34 +2,45 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'app/api.service';
 import { NgForm } from '@angular/forms';
 @Component({
-  selector: 'app-adddetail',
-  templateUrl: './adddetail.component.html',
-  styleUrls: ['./adddetail.component.css']
+  selector: 'app-addemployee',
+  templateUrl: './addemployee.component.html',
+  styleUrls: ['./addemployee.component.css']
 })
-export class AdddetailComponent implements OnInit {
+export class AddemployeeComponent implements OnInit {
   public add_company: object = {};
   public address: any;
+  public individualaddress:any;
+  public addloader: boolean = false;
   public loader: boolean = false;
   public company_det:any=[];
+  public individual_det:any=[];
   constructor(public api: ApiService) { }
 
   ngOnInit() {
   }
-
-  Addcompany(f: NgForm) {
-    console.log(f.value, "add company")
-    this.loader = true;
-    this.api.addcompany(f.value).then(res =>{
+  
+  AddEmployee(f: NgForm) {
+    console.log(f.value, "add individual")    
+    this.addloader = true;
+    this.api.addemployee(f.value).then(res =>{
       console.log(res,"console.log add company")
       if (res == "success") {
-        this.loader = false;
+        this.addloader = false;
       }
       if(res == "failed"){
-        this.loader = false;
+        this.addloader = false;
       }
     }).catch(e =>{
-      this.loader = false;
+      this.addloader = false;
     })
+  }
+  getindividualdetails(){  
+  this.api.getindividualDetails(this.individualaddress).then(res =>{
+    console.log(res);
+    this.individual_det = res;
+    let myDate = new Date( (res['startDate']) *1000);      
+    this.individual_det["startDate"]=(myDate.toLocaleString());  
+  })
   }
   getaddressid() {
     this.api.getaddressid(this.address).then((res) =>{
@@ -42,11 +53,11 @@ export class AdddetailComponent implements OnInit {
       console.log(e);
       
     })
-  }
-  Updatecompany(uf:NgForm){
+  }  
+  updateemployee(uf:NgForm){
     this.loader = true;
-    console.log(uf.value, "update company");
-    this.api.updatecompany(uf.value).then(res =>{
+    console.log(uf.value, "update employee");
+    this.api.updateemployee(uf.value).then(res =>{
       console.log(res,"console.log update company")
       if (res == "success") {
         this.loader = false;

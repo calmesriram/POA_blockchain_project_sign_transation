@@ -18,7 +18,10 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { MaterialModule } from 'materialmodule/appMaterial.module';
-import { AdddetailComponent } from 'app/adddetail/adddetail.component';
+import { AddindividualComponent } from 'app/addindividual/addindividual.component';
+import { AddemployeeComponent } from 'app/addemployee/addemployee.component';
+import { AddcompanyComponent } from 'app/addcompany/addcompany.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -35,10 +38,12 @@ import { AdddetailComponent } from 'app/adddetail/adddetail.component';
   ],
   declarations: [
     DashboardComponent,
-    AdddetailComponent,
+    AddcompanyComponent,
+    AddindividualComponent,
+    AddemployeeComponent,
     TableListComponent,
     IpfsfileComponent,
-    IconsComponent,
+    IconsComponent,    
     NotificationsComponent
     
   ]
